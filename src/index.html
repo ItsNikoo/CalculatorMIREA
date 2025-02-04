@@ -10,11 +10,21 @@
     <div class="calculator">
         <h1 class="title">The best Calculator</h1>
         <div class="contentContainer">
-            <div class="contentContainerChild">
-                <input class="number-input" type="text" name="input" id="">
-                <div class="buttons">
-                    <div class="numbers" id="numbers"></div>
-                    <div class="operations" id="operations"></div>
+            <form id="form" class="form">
+                <input id="result" class="number-input" type="text" name="result" value="0">
+            </form>
+            <div class="buttons">
+                <div class="numbers" id="numbers">
+                    <button class="numberButton delete">DEL</button>
+                    <button class="numberButton btn-gray">AC</button>
+                    <button class="numberButton btn-gray">^</button>
+                </div>
+                <div class="operations" id="operations">
+                    <button class="numberButton btn-blue">+</button>
+                    <button class="numberButton btn-blue">-</button>
+                    <button class="numberButton btn-blue">/</button>
+                    <button class="numberButton btn-blue">*</button>
+                    <button class="numberButton btn-blue">=</button>
                 </div>
             </div>
         </div>
