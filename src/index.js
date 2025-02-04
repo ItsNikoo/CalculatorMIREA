@@ -27,8 +27,51 @@ const power = (base, exponent) => {
     return result;
 }
 
+
+const historyContainer = document.getElementById('history');
+
+const saveHistory = () => {
+    localStorage.setItem('calculatorHistory', historyContainer.innerHTML);
+};
+
+const loadHistory = () => {
+    const savedHistory = localStorage.getItem('calculatorHistory');
+    if (savedHistory) {
+        historyContainer.innerHTML = savedHistory;
+    }
+};
+
+window.addEventListener('load', loadHistory);
+
+
+
+const addToHistory = (expression, result) => {
+    const historyElement = document.createElement('div');
+    historyElement.innerHTML = `${expression} = ${result}`;
+    historyContainer.appendChild(historyElement);
+    saveHistory();
+}
+
+function equalNumberCase(){
+    if (result.value.includes('/0')) {
+        throw new Error('Деление на ноль');
+    }
+    if (result.value.includes('^')) {
+        let [base, exponent] = result.value.split('^');
+        result.value = power(base, exponent);
+    }
+    else{
+        const expression = result.value;
+        result.value = eval(result.value);
+        addToHistory(expression, result.value);
+    }
+    result.value = eval(result.value);
+}
+
 const clearAll = () => {
     result.value = '0';
+    historyContainer.innerHTML = '';
+    saveHistory();
 }
 const deleteLast = () => {
     result.value = result.value.slice(0, -1) || '0';
@@ -54,15 +97,7 @@ buttons.forEach(button => {
                 break;
             case "=":
                 try {
-                    if (result.value.includes('/0')) {
-                        throw new Error('Деление на ноль');
-                    }
-                    if (result.value.includes('^')) {
-                        let [base, exponent] = result.value.split('^');
-                        result.value = power(base, exponent);
-                        break;
-                    }
-                    result.value = eval(result.value);
+                    equalNumberCase();
                     break;
                 } catch (e) {
                     result.value = "Ошибка";
@@ -84,3 +119,21 @@ buttons.forEach(button => {
     });
 });
 
+result.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        try {
+            equalNumberCase();
+        } catch (e) {
+            result.value = "Ошибка";
+        }
+    }
+    else if(event.key === 'Escape'){
+        clearAll();
+    }
+    else{
+        if (result.value === "0" || result.value === "Ошибка") {
+            result.value = "";
+        }
+    }
+});
