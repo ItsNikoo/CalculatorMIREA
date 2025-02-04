@@ -1,0 +1,108 @@
+.calculator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #b5b5b5;
+    padding: 20px;
+    width: 700px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contentContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.contentContainerChild {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75%;
+}
+
+
+.title {
+    font-family: "Roboto Light", sans-serif;
+}
+
+.number-input {
+    width: 100%;
+    padding: 20px 0;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #b5b5b5;
+    font-size: 16px;
+    text-align: center;
+}
+
+
+.blue {
+    background-color: #3838d6;
+    color: white;
+}
+
+
+/*Кнопки*/
+.buttons {
+    display: flex;
+    width: 100%;
+}
+
+.numbers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 75%;
+}
+
+.operations {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 10px;
+    width: 25%;
+}
+
+/*Стили самих кнопок непосредственно*/
+.numberButton {
+    padding: 30px;
+    border-radius: 5px;
+    border: 1px solid #b5b5b5;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.operationButton {
+    padding: 30px;
+    border-radius: 5px;
+    border: 1px solid #b5b5b5;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #818181;
+    color: white;
+    width: 100%;
+}
+
+.operationButtonImg {
+    width: 15px;
+    height: 15px;
+}
+
+/*Псевдостили самих кнопок непосредственно*/
+.numberButton:hover {
+    box-shadow: #818181 0 0 5px;
+}
+.operationButton:hover {
+    box-shadow: #d8d8d8 0 0 5px;
+}
