@@ -125,3 +125,101 @@
 .operationButton:hover {
     box-shadow: #d8d8d8 0 0 5px;
 }
+
+
+/*Классы для сегмента про историю событий*/
+.history{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.history-title{
+    font-family: "Roboto Light", sans-serif;
+    margin-bottom: 20px;
+    font-size: 35px;
+    text-align: center;
+}
+
+.history-element{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+    font-family: "Roboto Light", sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+.delete-history-button{
+    background-color: #8e0000;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/*Медиа запрос для компьютера, но 900пх*/
+@media(max-width: 900px) {
+    .container {
+        flex-direction: column;
+    }
+}
+
+/* Улучшенный CSS для мобильных устройств */
+@media (max-width: 600px) {
+    .calculator {
+        width: 100%;
+        max-width: 350px;
+        margin: 20px auto;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .numberButton {
+        width: 60px;
+        height: 60px;
+        font-size: 18px;
+        margin: 5px;
+    }
+
+    .history-title {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    .history-element {
+        font-size: 14px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        justify-content: center;
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .operations {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+    .numbers{
+        margin-left: 15px;
+        gap: 0;
+    }
+}

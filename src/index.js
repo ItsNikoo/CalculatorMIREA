@@ -27,8 +27,14 @@ const power = (base, exponent) => {
     return result;
 }
 
-
+//История
 const historyContainer = document.getElementById('history');
+const historyButton = document.body.querySelector(".delete-history-button");
+
+historyButton.addEventListener('click', () => {
+    historyContainer.innerHTML = '';
+    saveHistory();
+});
 
 const saveHistory = () => {
     localStorage.setItem('calculatorHistory', historyContainer.innerHTML);
@@ -38,27 +44,31 @@ const loadHistory = () => {
     const savedHistory = localStorage.getItem('calculatorHistory');
     if (savedHistory) {
         historyContainer.innerHTML = savedHistory;
+        historyContainer.className = 'history-container';
     }
 };
 
 window.addEventListener('load', loadHistory);
 
-
-
 const addToHistory = (expression, result) => {
     const historyElement = document.createElement('div');
     historyElement.innerHTML = `${expression} = ${result}`;
+    historyElement.className = 'history-element';
     historyContainer.appendChild(historyElement);
     saveHistory();
 }
+
+
 
 function equalNumberCase(){
     if (result.value.includes('/0')) {
         throw new Error('Деление на ноль');
     }
     if (result.value.includes('^')) {
+        const expression = result.value;
         let [base, exponent] = result.value.split('^');
         result.value = power(base, exponent);
+        addToHistory(expression, result.value);
     }
     else{
         const expression = result.value;
@@ -70,8 +80,6 @@ function equalNumberCase(){
 
 const clearAll = () => {
     result.value = '0';
-    historyContainer.innerHTML = '';
-    saveHistory();
 }
 const deleteLast = () => {
     result.value = result.value.slice(0, -1) || '0';
